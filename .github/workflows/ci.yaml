@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: checkout
-        uses: action/checkout@v2
+        uses: actions/checkout@v2
       - name: debug
         run: set -x
       - name: build
