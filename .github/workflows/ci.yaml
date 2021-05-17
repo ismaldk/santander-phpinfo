@@ -20,16 +20,16 @@ jobs:
       - name: debug
         run: set -x
       - name: build
-        run: docker build --file &{filename} --no-cache --tag &{registry}/&{users}/&{project}:&{tagname} .
+        run: docker build --file ${filename} --no-cache --tag ${registry}/${user}/${project}:${tagname} .
       - name: run
-        run: docker run --detach --name santander-phpinfo &{registry}/&{users}/&{project}:&{tagname}
+        run: docker run --detach --name ${project} ${registry}/${user}/${project}:${tagname}
       - name: test
-        run: while true ; do sleep &{sleep} ; docker logs &{project} 2>& 1 | grep &{pattern} && break ; done
+        run: while true ; do sleep ${sleep} ; docker logs ${project} 2>& 1 | grep ${pattern} && break ; done
       - name: top
-        run: docker top &{project}
+        run: docker top ${project}
       - name: stats
-        run: docker stats --no-stream &{project}
+        run: docker stats --no-stream ${project}
       - name: inspect
-        run: docker inspect &{project}
+        run: docker inspect ${project}
       - name: history
-        run: docker history &{registry}/&{users}/&{project}:&{tagname}
+        run: docker history ${registry}/${user}/${project}:${tagname}
