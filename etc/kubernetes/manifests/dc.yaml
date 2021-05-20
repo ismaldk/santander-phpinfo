@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: php
-          image: 'index.docker.io/ismaldk/santander-phpinfo:1.1'
+          image: 'index.docker.io/ismaldk/santander-phpinfo:latest'
           ports:
             - containerPort: 8080
               protocol: TCP
